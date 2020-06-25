@@ -1,0 +1,24 @@
+        type Query{
+            test:String!
+            login(nombre:String!,contrasena:String!):Titulares
+            logout(nombre:String!,contrasena:String!,token:ID!):Titulares
+            getFacturas(nombre:String!,token:ID!):[Facturas!]
+        }
+        type Mutation{
+            addUser(nombre:String!,contrasena:String!):Titulares!
+            addFactura(nombre:String!,token:ID!,concepto:String!,cantidad:Int!,titular:String!): Facturas!
+            removeUser(nombre:String!,token:ID!):Titulares
+        }
+        type Facturas{
+            id: ID!
+            fecha: String!
+            concepto:String!
+            cantidad: Int!
+            titular:Titulares!
+        }
+        type Titulares{
+            id: ID!
+            nombre: String!
+            contrasena: String!
+            token: ID
+        }
